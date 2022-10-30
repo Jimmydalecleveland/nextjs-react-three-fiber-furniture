@@ -1,34 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React Three Fiber simple Furniture product page example in Next.js
 
-## Getting Started
+[The website](https://nextjs-react-three-fiber-furniture.vercel.app/)
 
-First, run the development server:
+It doesn't resize well because I didn't want to focus on calculating `canvas` resizes, but it should be the proper size on refresh or first load.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+None of the actions do anything, either (cart, back button, etc.). This is purely a presentational demo for the 3D model.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Here is a screenshot of the site.
+![](./react-three-furniture-mobile.png)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Heads up, the code is a bit of a mess, as this is a quick prototype I threw together in a day.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The tools/tech used:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [`three.js`](https://github.com/mrdoob/three.js/) - Very popular 3D graphics and animation library.
+- [`@react-three/fiber`](https://github.com/pmndrs/react-three-fiber) - A react renderer for Three.js
+- [`@react-three/drei`](https://github.com/pmndrs/drei) - helpers for `@react-three/fiber`, such as lighting and draggable controls.
+- [Blender](https://www.blender.org/) for modeling (fine-tuning and exporting the models)
+- [https://www.blendswap.com/](https://www.blendswap.com/) for finding models
+- [`gltf-pipeline`](https://github.com/CesiumGS/gltf-pipeline) to compress the model file (draco 10 for max compression). Usually a 10x reduction in size.
+- [`gltfjsx`](https://github.com/pmndrs/gltfjsx) - You can run `npx gltfjsx ./your-file.glb` to output the mesh layers as JSX which saves you a lot of time.
